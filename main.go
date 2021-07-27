@@ -27,7 +27,8 @@ var err error
 func init() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")
-	viper.AddConfigPath("./config/")
+	viper.SetConfigFile("/go/SimpleCRUDApp/config/config.toml")
+	
 	err = viper.ReadInConfig()
 	if err != nil {
 		fmt.Println(err.Error())
@@ -35,6 +36,8 @@ func init() {
 }
 
 func main() {
+	http.HandleFunc("/", handler)
+        http.ListenAndServe(":8080", nil)
 	a := App{}
 	a.Initialize(viper.GetString("DB.username"),
 		viper.GetString("DB.password"),
