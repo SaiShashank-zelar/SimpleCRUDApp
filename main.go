@@ -36,8 +36,6 @@ func init() {
 }
 
 func main() {
-	http.HandleFunc("/", handler)
-        http.ListenAndServe(":8080", nil)
 	a := App{}
 	a.Initialize(viper.GetString("DB.username"),
 		viper.GetString("DB.password"),
