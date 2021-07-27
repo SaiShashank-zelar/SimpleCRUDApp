@@ -1,0 +1,12 @@
+[Unit]
+Description=go
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+
+ExecStart=/go/SimpleCRUDApp/SimpleCRUDApp
+
+[Install]
+WantedBy=multi-user.target
